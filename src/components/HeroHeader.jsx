@@ -63,7 +63,7 @@ const HeroHeader = ({ currentMonth, theme }) => {
 
       <div className="absolute inset-0 bg-transparent" />
 
-      <div className="absolute bottom-10 right-6 md:bottom-14 md:right-10 lg:bottom-36 lg:right-28 text-right">
+      <div className="absolute bottom-10 right-6 md:bottom-14 md:right-10 lg:bottom-30 lg:right-20 text-right">
         <div className="text-white/90 text-xl md:text-2xl lg:text-4xl font-light leading-none mb-1">
           {format(currentMonth, 'yyyy')}
         </div>
