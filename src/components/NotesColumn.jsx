@@ -30,15 +30,18 @@ function NotesColumn({ currentMonth, selection, theme, notesData, setNotesData }
   }, [notesData, rangeKey, selection.end, selection.start]);
 
   return (
-    <div className="w-full md:w-[31%] shrink-0 pt-2">
+    <div className="w-full md:w-1/3 lg:w-[30%] shrink-0 pt-4 px-2 md:px-0">
+      
+      {/* Header */}
       <div className="flex items-center gap-2 mb-3">
         <Edit2 size={16} className="text-neutral-700" />
-        <div className="text-[11px] font-semibold tracking-[0.22em] uppercase text-neutral-700">
+        <div className="text-[10px] md:text-[11px] font-semibold tracking-[0.22em] uppercase text-neutral-700">
           Notes
         </div>
       </div>
 
-      <div className="relative min-h-[250px]">
+      {/* Month Notes */}
+      <div className="relative min-h-[180px] md:min-h-[250px]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -48,31 +51,43 @@ function NotesColumn({ currentMonth, selection, theme, notesData, setNotesData }
         />
         <textarea
           value={monthValue}
-          onChange={(e) => setNotesData((prev) => ({ ...prev, [monthKey]: e.target.value }))}
+          onChange={(e) =>
+            setNotesData((prev) => ({
+              ...prev,
+              [monthKey]: e.target.value,
+            }))
+          }
           placeholder={`Jot down things for ${format(currentMonth, 'MMM')}...`}
-          className="relative z-10 w-full h-[250px] bg-transparent outline-none resize-none text-sm text-neutral-600 leading-[31px] pt-[2px] px-1 placeholder:text-neutral-400"
+          className="relative z-10 w-full h-[140px] md:h-[220px] lg:h-[250px] 
+                     bg-transparent outline-none resize-none 
+                     text-sm md:text-base text-neutral-600 
+                     leading-[28px] md:leading-[31px] 
+                     pt-[2px] px-2 placeholder:text-neutral-400"
           spellCheck="false"
         />
       </div>
 
+      {/* Selection Notes */}
       {selection.start && (
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
-          className="mt-8"
+          className="mt-6 md:mt-8"
         >
           <div className="flex items-center gap-2 mb-2">
             <CalendarIcon size={16} className={theme.dateAccent} />
-            <div className={`text-[11px] font-semibold tracking-[0.22em] uppercase ${theme.dateAccent}`}>
+            <div className={`text-[10px] md:text-[11px] font-semibold tracking-[0.22em] uppercase ${theme.dateAccent}`}>
               Selection Notes
             </div>
           </div>
-          <div className="text-xs text-neutral-400 mb-3 font-medium">
+
+          <div className="text-xs text-neutral-400 mb-2 md:mb-3 font-medium">
             {format(selection.start, 'MMM d')}
             {selection.end ? ` - ${format(selection.end, 'MMM d')}` : ''}
           </div>
-          <div className="relative min-h-[170px]">
+
+          <div className="relative min-h-[140px] md:min-h-[170px]">
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
@@ -84,14 +99,22 @@ function NotesColumn({ currentMonth, selection, theme, notesData, setNotesData }
               value={rangeValue}
               onChange={(e) => {
                 if (!rangeKey) return;
-                setNotesData((prev) => ({ ...prev, [rangeKey]: e.target.value }));
+                setNotesData((prev) => ({
+                  ...prev,
+                  [rangeKey]: e.target.value,
+                }));
               }}
               placeholder="Range specific notes..."
-              className="relative z-10 w-full h-[170px] bg-transparent outline-none resize-none text-sm text-neutral-700 leading-[31px] pt-[2px] px-1 placeholder:text-neutral-400"
+              className="relative z-10 w-full h-[140px] md:h-[170px] lg:h-[200px] 
+                         bg-transparent outline-none resize-none 
+                         text-sm md:text-base text-neutral-700 
+                         leading-[28px] md:leading-[31px] 
+                         pt-[2px] px-2 placeholder:text-neutral-400"
               spellCheck="false"
             />
           </div>
 
+          {/* Overlapping Notes */}
           {overlappingNotes.length > 0 && (
             <div className="mt-4 rounded-xl border border-neutral-100 bg-neutral-50 p-3">
               <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500 mb-2">
@@ -103,7 +126,9 @@ function NotesColumn({ currentMonth, selection, theme, notesData, setNotesData }
                     <div className={`text-[10px] font-semibold ${theme.dateAccent}`}>
                       {key.replace('_', ' to ')}
                     </div>
-                    <div className="text-sm text-neutral-600 truncate">{text}</div>
+                    <div className="text-xs md:text-sm text-neutral-600 truncate">
+                      {text}
+                    </div>
                   </div>
                 ))}
               </div>
