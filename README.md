@@ -1,3 +1,68 @@
+# Interactive Wall Calendar
+
+A modern, animated wall-calendar component built with React, Vite and Framer Motion.
+
+This project is a compact interactive calendar that supports month navigation (mouse-wheel 3D flip and button slide), day and range selection, and editable notes that persist to localStorage.
+
+**Key features**
+- **Animated navigation:** Smooth 3D flip on scroll and horizontal slide on button clicks (framer-motion).
+- **Notes:** Per-month and per-range notes persisted to localStorage.
+- **Theming:** Monthly themed images and color accents (centralized in `src/components/calendarThemes.js`).
+- **Modular:** Split into reusable components for readability and maintainability.
+
+**Tech stack**
+- React + Vite
+- date-fns
+- framer-motion
+- lucide-react (icons)
+- Tailwind-style utility classes (used throughout components)
+
+**Project structure (important files)**
+- [src/components/InteractiveWallCalendar.jsx](src/components/Calendar.jsx)
+- [src/components/HeroHeader.jsx](src/components/HeroHeader.jsx)
+- [src/components/CalendarGrid.jsx](src/components/CalendarGrid.jsx)
+- [src/components/NotesColumn.jsx](src/components/NotesColumn.jsx)
+- [src/components/calendarThemes.js](src/components/calendarThemes.js)
+- [src/components/calendarUtils.js](src/components/calendarUtils.js)
+
+**Design note**
+
+Instead of using CSS `clip-path` or other clipping techniques, this project uses an SVG Bezier curve path to create the decorative header shape and mask over the cover image. The SVG path provides a smooth, resolution-independent curve that is easy to animate or adjust — see [src/components/HeroHeader.jsx](src/components/HeroHeader.jsx) for the implementation.
+
+**Installation**
+
+Requirements: Node.js (18+ recommended)
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+**Development**
+
+Start the dev server:
+
+```bash
+npm run dev
+```
+
+Open the URL printed by Vite (usually `http://localhost:5173`).
+
+**Build / Preview**
+
+```bash
+npm run build
+npm run preview
+```
+
+**Notes & tips**
+- Notes are saved under the `localStorage` key `calendar-master-notes`.
+- If you change or customize CSS, ensure Tailwind (or your utility system) is configured in the project.
+
+If you'd like, I can also:
+- Run the dev server now and confirm the app boots locally.
+- Convert components to TypeScript or add tests.
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
