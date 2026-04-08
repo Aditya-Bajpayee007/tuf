@@ -18,7 +18,7 @@ This project is a compact interactive calendar that supports month navigation (m
 - Tailwind-style utility classes (used throughout components)
 
 **Project structure (important files)**
-- [src/components/InteractiveWallCalendar.jsx](src/components/Calendar.jsx)
+- [src/components/Calendar.jsx](src/components/Calendar.jsx)
 - [src/components/HeroHeader.jsx](src/components/HeroHeader.jsx)
 - [src/components/CalendarGrid.jsx](src/components/CalendarGrid.jsx)
 - [src/components/NotesColumn.jsx](src/components/NotesColumn.jsx)
