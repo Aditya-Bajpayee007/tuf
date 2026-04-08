@@ -10,7 +10,7 @@ const gridVariants = {
 
 export default function CalendarGrid({ monthDays, currentMonth, selection, handleDateClick, theme, slideCount, direction }) {
   return (
-    <div className="relative h-[300px] md:h-[420px]">
+    <div className="relative h-[300px] md:min-h-screen">
       <AnimatePresence mode="wait" custom={direction} initial={false}>
         <motion.div
           key={`slide-${slideCount}`}
